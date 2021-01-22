@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
+        <style>
+
+        /*hearts*/
+        body	{
+            background-color :#ec77d3; /*#ffceed;*/
+            font-family: 'Loved by the King', cursive;
+            /*background-image: url("s2xo.png");
+            background-repeat: no-repeat;
+            background-size: 464px 250px;
+            background-position: right;
+            background-position-y: 100px;
+            background-position-x: "screen.height";*/
+        }
+        
+        @keyframes heartfade {
+            0% {
+                opacity : 1;
+            }
+            50% {
+                opacity : 0;
+            }
+        }
+        .heart {
+            z-index : 999;
+            animation : heartfade 6s linear;
+            position : absolute; 
+        }
+        .heart:before,
+        .heart:after {
+            content : "";
+            background-color : #fc2a62;
+            position : absolute;
+            height : 30px;
+            width : 45px;
+            border-radius : 15px 0px 0px 15px;
+        }
+
+        .heart:before {
+            transform : rotate(45deg);
+        }
+
+        .heart:after {
+            left : 10.5px;
+            transform : rotate(135deg);
+        }
+
+        /*main butterfly*/
+        html, body {
+            overflow: hidden;  
+        }
+
+        .cartoon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        width: 80vmin;
+        height: 80vmin;
+        }
+
+        .cartoon div {
+        position: absolute;
+        box-sizing: border-box;
+        }
+
+       
+        .b {
+        border: 0.5vmin solid;
+        }
+
+        .r {
+        border-radius: 100%;
+        }
+
+        .hb::before,
+        .ha::after {
+        content: "";
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        }
+
+      
+        .cartoon {
+        --body: #630;
+        
+        }
+
+        .antenna, 
+        .body {
+        width: 4%;
+        height: 4%;
+        background: var(--body);
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        }
+
+        .body::before {
+        width: 60%;
+        height: 1000%;
+        background: var(--body);
+        left: 50%;
+        transform: translate(-50%, 0);
+        border-radius: 50%;
+        }
+
+        .body::after {
+        width: 150%;
+        height: 400%;
+        background: var(--body);
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        border-radius: 50%;
+        }
+
+        .antenna {
+        box-shadow: 
+            -4.1vmin -9.1vmin 0 -1vmin var(--body),
+            4.1vmin -9.1vmin 0 -1vmin var(--body);
+        }
+
+        .antenna::after,
+        .antenna::before {
+        width: 150%;
+        height: 350%;
+        border-radius: 50%;
+        left: 80%;
+        bottom: 20%;
+        border: 0.25vmin solid transparent;
+        border-left: 0.5vmin solid var(--body);
+        transform: rotate(20deg);
+        }
+
+        .antenna::after {
+        border-left: 0.5vmin solid transparent;
+        border-right: 0.5vmin solid var(--body);
+        transform: rotate(-20deg);
+        left: -135%;
+        }
+
+        @keyframes wingTopFlap1 {
+        0%, 100% { transform: rotate(-12deg) rotate3d(0, 0, 0, 10deg); }
+        50% { transform: rotate(-12deg) rotate3d(0, 1, 0, 10deg); }
+        }
+
+        @keyframes wingTopFlap2 {
+        0%, 100% { transform: scaleX(-1) rotate(-12deg) rotate3d(0, 0, 0, 10deg); }
+        50% { transform: scaleX(-1) rotate(-12deg) rotate3d(0, 1, 0, 10deg); }
+        }
+
+        .wing-top {
+        top: 5%;
+        width: 50%;
+        height: 45%;
+        left: -0.125%;
+        background: linear-gradient(darkorange, orange);
+        border-radius: 20% 100% 10% 80%;
+        transform-origin: right bottom;
+        transform: rotate(-12deg);
+        box-shadow: 
+            inset 3.5vmin 1.5vmin 0 1vmin,
+            inset -0.5vmin 0 0 1vmin;
+        animation: wingTopFlap1 2s linear infinite;
+        overflow: hidden;
+        }
+
+        .wing-top::after {
+        width: 120%;
+        height: 90%;
+        border-radius: 50%;
+        transform: rotate(35deg);
+        left: 30%;
+        top: -5%;
+        box-shadow: inset 1vmin -2vmin;
+        }
+
+        .wing-top::before {
+        width: 64%;
+        height: 25%;
+        transform: rotate(0deg);
+        top: 61.5%;
+        border-radius: 50% 50% 40% 60%;
+        box-shadow: -1vmin -0.25vmin 0 1.5vmin;
+        }
+
+        .wing-top ~ .wing-top {
+        left: 0;
+        transform: scaleX(-1) rotate(-12deg);
+        animation: wingTopFlap2 2s linear infinite;
+        }
+
+        .dots {
+        width: 2vmin;
+        height: 2vmin;
+        background: white;
+        color: white;
+        left: 5%;
+        top: 10%;
+        box-shadow: -0.5vmin 3vmin,
+            -0.5vmin 6vmin 0 0.125vmin,
+            1.5vmin -2.25vmin orange,
+            3.5vmin -3vmin 0 -0.5vmin,
+            20vmin 7vmin 0 2vmin black,
+            20vmin 7.25vmin 0 3vmin
+        }
+
+        @keyframes wingBottomFlap1 {
+        0%, 100% { transform: rotate(55deg) rotate3d(0, 0, 0, 10deg); }
+        50% { transform: rotate(55deg) rotate3d(0, 1, 0, 10deg); }
+        }
+
+        @keyframes wingBottomFlap2 {
+        0%, 100% { transform: scaleX(-1) rotate(55deg) rotate3d(0, 0, 0, 10deg); }
+        50% { transform: scaleX(-1) rotate(55deg) rotate3d(0, 1, 0, 10deg); }
+        }
+
+        .wing-bottom {
+        width: 28%;
+        height: 40%;
+        background: linear-gradient(95deg, darkorange, orange);
+        border-radius: 100% / 125% 125% 70% 50%;
+        transform-origin: right top;
+        transform: rotate(55deg);
+        top: 59%;
+        left: 27.5%;
+        box-shadow: inset 1vmin -2vmin 0 0.5vmin;
+        animation: wingBottomFlap1 2s linear infinite;
+        overflow: hidden;
+        }
+
+        .wing-bottom ~ .wing-bottom {
+        transform: scaleX(-1) rotate(55deg);
+        left: auto;
+        right: 55.5%;
+        animation: wingBottomFlap2 2s linear infinite;
+        }
+
+        .wing-bottom::before {
+        width: 100%;
+        height: 100%;
+        left: 55%;
+        top: -30%;
+        border-radius: 50%;
+        box-shadow: -1vmin 0.5vmin,
+            -3vmin 2vmin 0 1vmin orange,
+            -3vmin 3vmin 0 1.5vmin
+        }
+
+        .wing-bottom::after {
+        width: 3vmin;
+        height: 3vmin;
+        background: black;
+        top: 70%;
+        left: 15%;
+        border-radius: 50%;
+        box-shadow: 
+            2vmin 2vmin 0 -0.5vmin, 
+            2.75vmin -0.5vmin 0 -0.5vmin white,
+            4.25vmin 1.5vmin 0 -0.75vmin red,
+            11vmin -10vmin 0 1vmin,
+            15vmin -12vmin 0 -0.5vmin white;
+        }
+    
+
+        .photo1{
+            position: absolute;
+            height : 150px;
+            width : 150px;
+
+        }       
+
+        .text{
+            position: absolute;
+            width: 100%;           
+            /*background-image: url("s2xo.png");
+            background-repeat: no-repeat;
+            background-size: 414px 200px;
+            background-position: right;
+            background-position-y: 50px;
+            background-position-x: "screen.height";*/
+            line-height: 1.0;
+        }
+
+        
+        #bas{
+            width: 414px;
+            height: 200px;
+            position: absolute;
+      
+        }
+
+
+        h2.titulo2{
+            text-align: center;
+            font-size: 35px;
+            color: purple;
+            margin-bottom: 200px;
+        }
+
+        h2.titulo {
+            text-align: center;
+            font-size: 35px;
+            margin-top: 25px;
+            color: white;
+            }
+
+        #s2{
+            color: red;
+            font-size: 50px;
+            line-height: 1.0;
+        }
+
+        </style>
+    </head>
+
+    <body>
+        <!--<img src="butterflyHeart.gif" border ="0" heigth= 220px width = 220px>-->
+        <!--<img src="maldives.jpeg" border ="0" >-->
+
+        <audio controls controls loop="loop" autoplay="autoplay" hidden  id="backgroundMusic">
+            <source src="Vincent Vallières - On va s aimer encore.mp3" type="audio/mp3">
+        </audio>
+
+        <div class="text col-xs-6 col-sm-3">
+            
+            <h2 class="titulo">
+                As borboletas nos ensinam que há tempo certo pra tudo ... <br> 
+                Vamos ser fortes meu amor, pois o nosso tempo está chegando
+                e logo estaremos juntos pra sempre!!                
+            </h2>         
+
+            <h2 class="titulo2">
+                Que este seja o primeiro de milhares meses ao teu lado! <br>
+                <br>
+                <b id="s2">Te amo!! &#9825 I love you!! &#9825 Je t'aime!!</b>
+            </h2>
+        </div>
+
+        <div class="papilon">
+            <div class="cartoon hb col-xs-6 col-sm-3" >
+                    
+                    <div class="wing-bottom ha hb"></div>
+                    <div class="wing-top ha hb">
+                    <div class="dots r"></div>
+                    </div>
+                    <div class="wing-bottom ha hb"></div>
+                    <div class="wing-top ha hb">
+                    <div class="dots r"></div>
+                    </div>
+                    <div class="body r ha hb"></div>
+                    <div class="antenna r ha hb"></div>                    
+                </div>     
+
+               <!-- <img src="s2xo.png" id="bas"> -->
+        </div>
+
+
+    </body>
+
+    <script>
+
+        // audio
+        window.onload=function(){
+            document.getElementById("backgroundMusic").play();
+        }
+
+
+         /**********************************************
+         *  hearts
+        **********************************************/
+        var brd = document.createElement("DIV");
+
+        document.body.insertBefore(brd, document.getElementById("board"));
+        const duration = 3000;
+        const speed = 0.5;
+        const cursorXOffset = 0;
+        const cursorYOffset = -5;
+        var hearts = [];
+
+        function generateHeart(x, y, xBound, xStart, scale)
+        {
+            var heart = document.createElement("DIV");
+            heart.setAttribute('class', 'heart');
+            brd.appendChild(heart);
+            heart.time = duration;
+            //heart.textContent.fontcolor("white") = "Love";
+            //heart.class = "col-xs-12 col-sm-6";
+            heart.x = x;    
+            heart.y = y;
+            heart.bound = xBound;
+            heart.direction = xStart;
+            heart.style.left = heart.x + "px";
+            heart.style.top = heart.y + "px";
+            heart.scale = scale;
+            heart.style.transform = "scale(" + scale + "," + scale + ")";
+            if(hearts == null)
+                hearts = [];
+            hearts.push(heart);
+            return heart;
+        }
+
+
+        var before = Date.now();
+        var id = setInterval(frame, 5);
+
+        function frame()
+        {
+            var current = Date.now();
+            var deltaTime = current - before;
+            before = current;
+
+            for(i in hearts)
+            {
+                var heart = hearts[i];
+                heart.time -= deltaTime;
+
+                if(heart.time > 0)
+                {
+                    heart.y -= speed;
+                    heart.style.top = heart.y + "px";
+                    heart.style.left = heart.x + heart.direction * heart.bound * Math.sin(heart.y * heart.scale / 30) + "px";
+                }
+                else
+                {
+                    heart.parentNode.removeChild(heart);
+                    hearts.splice(i, 1);
+                }
+            }
+        }
+
+        var down = true;
+        var event = null;
+
+        document.onmousedown = function(e) {
+            down = true;
+            event = e;
+        }
+        document.onmouseup = function(e) {
+            down = false;
+        }
+        document.onmousemove = function(e) {
+            event = e;
+        }
+        document.ontouchstart = function(e) {
+            down = true;
+            event = e.touches[0];
+        }
+        document.ontouchend = function(e) {
+            down = false;
+        }
+
+        var gr = setInterval(check, 100);
+
+        function check()
+        {
+            if(down)
+                {
+                    var start = 1 - Math.round(Math.random()) * 2;
+                    var scale = Math.random() * Math.random() * 0.8 + 0.2;
+                    var bound = 30 + Math.random() * 20;
+                    generateHeart(event.pageX - brd.offsetLeft + cursorXOffset, event.pageY - brd.offsetTop + cursorYOffset, bound, start, scale);
+                }
+        }
+
+        
+
+        // hearts
+        var before = Date.now();
+        var id = setInterval(frame, 5);
+
+        function frame()
+        {
+
+            var current = Date.now();
+            var deltaTime = current - before;
+            before = current;
+
+            for(i in hearts)
+            {
+                var heart = hearts[i];
+                heart.time -= deltaTime;
+
+                if(heart.time > 0)
+                {
+                    heart.y -= speed;
+                    heart.style.top = heart.y + "px";
+                    heart.style.left = heart.x + heart.direction * heart.bound * Math.sin(heart.y * heart.scale / 30) + "px";
+                }
+                else
+                {
+                    heart.parentNode.removeChild(heart);
+                    hearts.splice(i, 1);
+                }
+            }
+        }
+        
+        
+        // Butterfluies
+
+        /*
+        Flying Butterfly script (By BGAudioDr@aol.com)
+        Modified slightly/ permission granted to Dynamic Drive to feature script in archive
+        For full source, visit http://www.dynamicdrive.com
+        */
+
+        var Ymax=8;                                //MAX # OF PIXEL STEPS IN THE "X" DIRECTION
+        var Xmax=8;                                //MAX # OF PIXEL STEPS IN THE "Y" DIRECTION
+        var Tmax=10000;                        //MAX # OF MILLISECONDS BETWEEN PARAMETER CHANGES
+
+        //FLOATING IMAGE URLS FOR EACH IMAGE. ADD OR DELETE ENTRIES. KEEP ELEMENT NUMERICAL ORDER STARTING WITH "0" !!
+        var floatimages=new Array();
+        floatimages[0]='yellowButterfly.gif';
+        //floatimages[1]='butterfly2.gif';
+        floatimages[1]='butterflygreenpink.gif';
+        //floatimages[2]='butterflyway.gif';
+        //floatimages[2]='butterflys.gif';
+        floatimages[2]='butterflyblue.gif';
+        floatimages[3]='yellow2Butterfly.gif';
+        floatimages[4]='butterflypink.gif';
+        floatimages[5]='butterflysmallblue.gif';
+        floatimages[6]='colerful2Butterfly.gif';
+        floatimages[7]='yellow3Butterfly.gif';
+        floatimages[8]='twobutterflies.gif';
+        floatimages[9]='colerful3Butterfly.gif';
+        floatimages[10]='redbutterfly.gif';
+        floatimages[11]='magentabutterfly.gif';
+        floatimages[12]='always.png';
+        floatimages[13]='longe.png';
+        floatimages[14]='circle.png';
+        floatimages[15]='inspiracao.png';
+        floatimages[16]='facil.png';
+        floatimages[17]='encomenda.png';
+        floatimages[18]='lov.png';
+        floatimages[19]='lov2.png';
+        floatimages[20]='lov3.png';
+        floatimages[21]='lov4.png';
+
+        //*********DO NOT EDIT BELOW***********
+        var NS4 = (navigator.appName.indexOf("Netscape")>=0 && parseFloat(navigator.appVersion) >= 4 && parseFloat(navigator.appVersion) < 5)? true : false;
+        var IE4 = (document.all)? true : false;
+        var NS6 = (parseFloat(navigator.appVersion) >= 5 && navigator.appName.indexOf("Netscape")>=0 )? true: false;
+        var wind_w, wind_h, t='', IDs=new Array();
+
+        for(i=0; i<floatimages.length; i++){
+            
+            t+=(NS4)?'<layer name="pic'+i+'" visibility="hide" width="10" height="10"><a href="javascript:hidebutterfly()">' : '<div id="pic'+i+'" style="position:absolute; visibility:hidden;width:10px; height:10px; z-index:1000"><a href="javascript:hidebutterfly()">';
+        
+            if (i < 12) {
+                if (floatimages[i] != 'butterflysmallblue.gif') {
+                    t+= '<img src="'+floatimages[i]+'" name="p'+i+'" border="0" heigth= 50px width = 50px>'
+                }            
+                else { 
+                    t+= '<img src="'+floatimages[i]+'" name="p'+i+'" border="0">'
+                };
+            } else {
+                t+= '<img src="'+floatimages[i]+'" name="p'+i+'" border="0" heigth= 15px width = 150px>'
+            }
+            t+=(NS4)? '</a></layer>':'</a></div>';
+        }
+
+        document.write(t);
+
+        function moveimage(num){
+            if(getidleft(num)+IDs[num].W+IDs[num].Xstep >= wind_w+getscrollx())IDs[num].Xdir=false;
+            if(getidleft(num)-IDs[num].Xstep<=getscrollx())IDs[num].Xdir=true;
+            if(getidtop(num)+IDs[num].H+IDs[num].Ystep >= wind_h+getscrolly())IDs[num].Ydir=false;
+            if(getidtop(num)-IDs[num].Ystep<=getscrolly())IDs[num].Ydir=true;
+            moveidby(num, (IDs[num].Xdir)? IDs[num].Xstep :  -IDs[num].Xstep , (IDs[num].Ydir)?  IDs[num].Ystep:  -IDs[num].Ystep);
+        }
+
+        function getnewprops(num){
+            IDs[num].Ydir=Math.floor(Math.random()*2)>0;
+            IDs[num].Xdir=Math.floor(Math.random()*2)>0;
+            IDs[num].Ystep=Math.ceil(Math.random()*Ymax);
+            IDs[num].Xstep=Math.ceil(Math.random()*Xmax)
+            setTimeout('getnewprops('+num+')', Math.floor(Math.random()*Tmax));
+
+
+            /*generateHeart(10, screen.height-150, null, null, 1);
+            generateHeart(screen.width-70, screen.height-150, null, null, 1);*/
+
+            /*
+            generateHeart(450, 300, null, null, 1);
+            generateHeart(500, 400, null, null, 0.5);
+            generateHeart(550, 500, null, null, 0.7);
+            generateHeart(600, 600, null, null, 1);
+            generateHeart(650, 700, null, null, 0.3);
+            generateHeart(750, 800, null, null, 0.6);
+            generateHeart(1000, 300, null, null, 1);
+            generateHeart(950, 400, null, null, 0.5);
+            generateHeart(900, 500, null, null, 0.7);
+            generateHeart(850, 600, null, null, 1);
+            generateHeart(800, 700, null, null, 0.3);*/
+
+            /*
+            generateHeart(10, 100, null, null, 0.4);
+            generateHeart(30, 150, null, null, 0.6);
+            generateHeart(60, 100, null, null, 0.3);
+            generateHeart(90, 150, null, null, 2);
+            generateHeart(110, 200, null, null, 0.7)
+            generateHeart(160, 250, null, null, 0.2);;
+            generateHeart(210, 300, null, null, 0.5);
+            generateHeart(260, 350, null, null, 0.3);*/
+        }
+
+        function getscrollx(){
+            if(NS4 || NS6)return window.pageXOffset;
+            if(IE4)return document.body.scrollLeft;
+        }
+
+        function getscrolly(){
+            if(NS4 || NS6)return window.pageYOffset;
+            if(IE4)return document.body.scrollTop;
+        }
+
+        function getid(name){
+            if(NS4)return document.layers[name];
+            if(IE4)return document.all[name];
+            if(NS6)return document.getElementById(name);
+        }
+
+        function moveidto(num,x,y){
+            if(NS4)IDs[num].moveTo(x,y);
+            if(IE4 || NS6){
+            IDs[num].style.left=x+'px';
+            IDs[num].style.top=y+'px';
+        }}
+
+        function getidleft(num){
+            if(NS4)return IDs[num].left;
+            if(IE4 || NS6)return parseInt(IDs[num].style.left);
+        }
+
+        function getidtop(num){
+            if(NS4)return IDs[num].top;
+            if(IE4 || NS6)return parseInt(IDs[num].style.top);
+        }
+
+        function moveidby(num,dx,dy){
+            if(NS4)IDs[num].moveBy(dx, dy);
+            if(IE4 || NS6){
+                IDs[num].style.left=(getidleft(num)+dx)+'px';
+                IDs[num].style.top=(getidtop(num)+dy)+'px';
+            }
+        }
+
+        function getwindowwidth(){
+            if(NS4 || NS6)return window.innerWidth;
+            if(IE4)return document.body.clientWidth;
+        }
+
+        function getwindowheight(){
+            if(NS4 || NS6)return window.innerHeight;
+            if(IE4)return document.body.clientHeight;
+        }        
+
+        function hidebutterfly(){
+            for(i=0; i<floatimages.length; i++){
+                if (IE4)
+                eval("document.all.pic"+i+".style.visibility='hidden'")
+                else if (NS6)
+                document.getElementById("pic"+i).style.visibility='hidden'
+                else if (NS4)
+                eval("document.pic"+i+".visibility='hide'")
+                clearInterval(startfly)
+    
+            }
+        }
+
+        if (NS4||NS6||IE4){
+            window.onload=init;
+            window.onresize=function(){ wind_w=getwindowwidth(); wind_h=getwindowheight(); }
+        }
+
+        
+        // everything
+        function init(){
+            
+            wind_w=getwindowwidth();
+            wind_h=getwindowheight();
+            
+            for(i=0; i<floatimages.length; i++){
+                IDs[i]=getid('pic'+i);
+                if(NS4){
+                    IDs[i].W=IDs[i].document.images["p"+i].width;
+                    IDs[i].H=IDs[i].document.images["p"+i].height;
+                }
+                if(NS6 || IE4){
+                    IDs[i].W=document.images["p"+i].width;
+                    IDs[i].H=document.images["p"+i].height;
+                }
+
+                getnewprops(i);
+                moveidto(i , Math.floor(Math.random()*(wind_w-IDs[i].W)), Math.floor(Math.random()*(wind_h-IDs[i].H)));
+
+                if(NS4)IDs[i].visibility = "show";
+                if(IE4 || NS6)IDs[i].style.visibility = "visible";
+                startfly=setInterval('moveimage('+i+')',Math.floor(Math.random()*100)+100);
+            }
+        }
+
+
+
+
+        
+
+
+    </script>
+
+</html>
